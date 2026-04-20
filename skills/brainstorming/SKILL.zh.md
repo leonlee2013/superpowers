@@ -32,34 +32,35 @@ description: "在任何创造性工作之前必须使用此 skill——创建功
 9. **过渡到实现** — 调用 writing-plans skill 创建实现计划
 
 ## 流程图
+https://edotor.net/?engine=dot#deflate:eNq1k91O4kAYhs+9iqbnnKyHRm/E5aAI0cZaSNFoYjbRlfKrCweK+BctsqKyKWgMtNrgzfSbmR5xCzu1+BMcxproHL/vO9+883xxeV6TUgtCTJNkNb2c1JZkdV5YnxDoEdGfOr6re4aNj0zXKrpWCVVzojCbXpBSielYci06NRTW2lC5QN0ClIukmSXNgrdvevXawDl9kcdlaSmpxl8s5YrbP4Jym+phu0r6OhSvoPcX9N5PdeDkcekfbpXwYca1NtCJgbp5tNkeONuutQOVFuhd96EKWR1Me+AUmDOVK5C7R/0MsvRgmvEq4UdkUnCta1S1kZFn6eBmDzfuidknpoFbZ6T4m6XCu5co3xu2UbAhlw0cnB6wQ59xEMhou8g4ZwWTZgadOSR3DabxVA90buC44z6a0NgZU8DbYajNq+lBCmcY0tmiLmFVk5cpBpGUIqlpIb0oK8qrI7kSUxJzsjanJKiNC0pkho9GGHqeMr6YFUWKJZRp/14x+okZ3uM0DKJO8Zu4HnM1h/FXxwjVXOJ9F4NxDv2+g8d7mJUYc+vbYmk13vEGBR3t2mI0bChzqxjfztL5/g/3LfRejtY0uolhlvWjF9GCyMUmpyNmInfZnz+gdxv068f++g9B6V9N
 
 ```dot
 digraph brainstorming {
-    "Explore project context" [shape=box];
-    "Visual questions ahead?" [shape=diamond];
-    "Offer Visual Companion\n(own message, no other content)" [shape=box];
-    "Ask clarifying questions" [shape=box];
-    "Propose 2-3 approaches" [shape=box];
-    "Present design sections" [shape=box];
-    "User approves design?" [shape=diamond];
-    "Write design doc" [shape=box];
-    "Spec self-review\n(fix inline)" [shape=box];
-    "User reviews spec?" [shape=diamond];
-    "Invoke writing-plans skill" [shape=doublecircle];
+    "探索项目上下文" [shape=box];
+    "是否涉及视觉问题？" [shape=diamond];
+    "提供可视化辅助工具\n（独立的一条消息，不含其他内容）" [shape=box];
+    "提出澄清问题" [shape=box];
+    "提出 2-3 个方案" [shape=box];
+    "展示设计章节" [shape=box];
+    "用户是否批准设计？" [shape=diamond];
+    "编写设计文档" [shape=box];
+    "规格自审\n（就地修复）" [shape=box];
+    "用户是否审阅规格？" [shape=diamond];
+    "调用 writing-plans skill" [shape=doublecircle];
 
-    "Explore project context" -> "Visual questions ahead?";
-    "Visual questions ahead?" -> "Offer Visual Companion\n(own message, no other content)" [label="yes"];
-    "Visual questions ahead?" -> "Ask clarifying questions" [label="no"];
-    "Offer Visual Companion\n(own message, no other content)" -> "Ask clarifying questions";
-    "Ask clarifying questions" -> "Propose 2-3 approaches";
-    "Propose 2-3 approaches" -> "Present design sections";
-    "Present design sections" -> "User approves design?";
-    "User approves design?" -> "Present design sections" [label="no, revise"];
-    "User approves design?" -> "Write design doc" [label="yes"];
-    "Write design doc" -> "Spec self-review\n(fix inline)";
-    "Spec self-review\n(fix inline)" -> "User reviews spec?";
-    "User reviews spec?" -> "Write design doc" [label="changes requested"];
-    "User reviews spec?" -> "Invoke writing-plans skill" [label="approved"];
+    "探索项目上下文" -> "是否涉及视觉问题？";
+    "是否涉及视觉问题？" -> "提供可视化辅助工具\n（独立的一条消息，不含其他内容）" [label="是"];
+    "是否涉及视觉问题？" -> "提出澄清问题" [label="否"];
+    "提供可视化辅助工具\n（独立的一条消息，不含其他内容）" -> "提出澄清问题";
+    "提出澄清问题" -> "提出 2-3 个方案";
+    "提出 2-3 个方案" -> "展示设计章节";
+    "展示设计章节" -> "用户是否批准设计？";
+    "用户是否批准设计？" -> "展示设计章节" [label="否，需修改"];
+    "用户是否批准设计？" -> "编写设计文档" [label="是"];
+    "编写设计文档" -> "规格自审\n（就地修复）";
+    "规格自审\n（就地修复）" -> "用户是否审阅规格？";
+    "用户是否审阅规格？" -> "编写设计文档" [label="需要修改"];
+    "用户是否审阅规格？" -> "调用 writing-plans skill" [label="已批准"];
 }
 ```
 
